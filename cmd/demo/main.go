@@ -23,7 +23,7 @@ func main() {
 
 func run(ctx context.Context, args []string) error {
 	if len(args) == 0 {
-		return fmt.Errorf("missing subcommand: setup | publish | consume | commit-v2 | teardown")
+		return fmt.Errorf("missing subcommand: setup | publish | consume | commit | teardown")
 	}
 
 	switch args[0] {
@@ -33,8 +33,8 @@ func run(ctx context.Context, args []string) error {
 		return runPublish(ctx, args[1:])
 	case "consume":
 		return runConsume(ctx, args[1:])
-	case "commit-v2":
-		return runCommitV2(ctx, args[1:])
+	case "commit":
+		return runCommit(ctx, args[1:])
 	case "teardown":
 		return runTeardown(ctx, args[1:])
 	default:
@@ -168,13 +168,13 @@ func runConsume(ctx context.Context, args []string) error {
 	return nil
 }
 
-func runCommitV2(ctx context.Context, args []string) error {
-	fs := flag.NewFlagSet("commit-v2", flag.ContinueOnError)
+func runCommit(ctx context.Context, args []string) error {
+	fs := flag.NewFlagSet("commit", flag.ContinueOnError)
 	project := fs.String("project", "", "GCP project ID")
 	schemaID := fs.String("schema", "", "schema ID")
 	protoPath := fs.String("proto", "proto/state.proto", "path to proto file")
 	if err := fs.Parse(args); err != nil {
-		return fmt.Errorf("parse commit-v2 flags: %w", err)
+		return fmt.Errorf("parse commit flags: %w", err)
 	}
 
 	projectID, err := resolveProjectID(*project)

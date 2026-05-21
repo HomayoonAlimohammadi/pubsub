@@ -57,6 +57,7 @@ func CommitRevision(ctx context.Context, projectID, schemaID, protoPath string) 
 		Schema: &pubsubpb.Schema{
 			Type:       pubsubpb.Schema_PROTOCOL_BUFFER,
 			Definition: string(definition),
+			Name:       fmt.Sprintf("projects/%s/schemas/%s", projectID, schemaID),
 		},
 	})
 	if err != nil {

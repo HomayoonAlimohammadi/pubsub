@@ -25,6 +25,7 @@ type State struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	PostAbbr      string                 `protobuf:"bytes,2,opt,name=post_abbr,json=postAbbr,proto3" json:"post_abbr,omitempty"`
+	Population    int64                  `protobuf:"varint,3,opt,name=population,proto3" json:"population,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -73,14 +74,24 @@ func (x *State) GetPostAbbr() string {
 	return ""
 }
 
+func (x *State) GetPopulation() int64 {
+	if x != nil {
+		return x.Population
+	}
+	return 0
+}
+
 var File_proto_state_proto protoreflect.FileDescriptor
 
 const file_proto_state_proto_rawDesc = "" +
 	"\n" +
-	"\x11proto/state.proto\x12\x05mypkg\"8\n" +
+	"\x11proto/state.proto\x12\x05mypkg\"X\n" +
 	"\x05State\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1b\n" +
-	"\tpost_abbr\x18\x02 \x01(\tR\bpostAbbrB<Z:github.com/HomayoonAlimohammadi/pubsub/gen/statepb;statepbb\x06proto3"
+	"\tpost_abbr\x18\x02 \x01(\tR\bpostAbbr\x12\x1e\n" +
+	"\n" +
+	"population\x18\x03 \x01(\x03R\n" +
+	"populationB<Z:github.com/HomayoonAlimohammadi/pubsub/gen/statepb;statepbb\x06proto3"
 
 var (
 	file_proto_state_proto_rawDescOnce sync.Once

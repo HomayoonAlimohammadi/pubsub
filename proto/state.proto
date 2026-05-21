@@ -5,4 +5,5 @@ option go_package = "github.com/HomayoonAlimohammadi/pubsub/gen/statepb;statepb"
 message State {
   string name = 1;
   string post_abbr = 2;
+  int64 population = 3;
 }
