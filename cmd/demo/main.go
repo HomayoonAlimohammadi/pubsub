@@ -97,6 +97,10 @@ func runPublish(ctx context.Context, args []string) error {
 		return fmt.Errorf("parse publish flags: %w", err)
 	}
 
+	*name = "test-name"
+	*abbr = "test-abbr"
+	*population = 100
+
 	projectID, err := resolveProjectID(*project)
 	if err != nil {
 		return err
@@ -109,12 +113,13 @@ func runPublish(ctx context.Context, args []string) error {
 	defer pub.Close()
 
 	msg := &statepb.State{
-		Name:     *name,
-		PostAbbr: *abbr,
+		Name:       *name,
+		PostAbbr:   *abbr,
+		Population: *population,
 	}
-	if *population > 0 {
-		log.Printf("ignoring --population until proto/state.proto is upgraded to schema v2")
-	}
+	// if *population > 0 {
+	// 	log.Printf("ignoring --population until proto/state.proto is upgraded to schema v2")
+	// }
 
 	msgID, err := pub.Publish(ctx, msg)
 	if err != nil {
@@ -157,7 +162,7 @@ func runConsume(ctx context.Context, args []string) error {
 		if s == nil {
 			return errors.New("decoded state is nil")
 		}
-		log.Printf("received state name=%s abbr=%s revision=%s", s.GetName(), s.GetPostAbbr(), attrs["googclient_schemarevisionid"])
+		log.Printf("received state name=%s abbr=%s revision=%s population=%d", s.GetName(), s.GetPostAbbr(), attrs["googclient_schemarevisionid"], s.GetPopulation())
 		fmt.Println("attrs:", attrs)
 		return nil
 	})

@@ -35,7 +35,6 @@ func (c *Consumer) Run(ctx context.Context, h Handler) error {
 		s := &statepb.State{}
 		var err error
 
-		fmt.Println("message attrs:", msg.Attributes)
 		switch msg.Attributes["googclient_schemaencoding"] {
 		case "BINARY":
 			err = proto.Unmarshal(msg.Data, s)
