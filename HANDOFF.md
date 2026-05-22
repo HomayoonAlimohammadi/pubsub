@@ -366,3 +366,19 @@ Plus: max 20 revisions per schema, schema definition ≤ 300 KB, schema name for
 - Concurrency tuning beyond defaults
 
 These are all valid follow-ups but distract from the core exercise.
+
+## Links
+
+- https://docs.cloud.google.com/pubsub/docs/schemas
+- https://docs.cloud.google.com/pubsub/docs/create-schemas
+- https://docs.cloud.google.com/pubsub/docs/commit-schema-revision
+- https://docs.cloud.google.com/pubsub/docs/delete-schema
+- https://docs.cloud.google.com/pubsub/docs/delete-schema-revision
+- https://docs.cloud.google.com/pubsub/docs/list-schemas
+- https://docs.cloud.google.com/pubsub/docs/list-schema-revisions
+- https://docs.cloud.google.com/pubsub/docs/roll-back-schemas
+- https://docs.cloud.google.com/pubsub/docs/view-schema-details
+- https://docs.cloud.google.com/pubsub/docs/validate-schema-definition
+- https://docs.cloud.google.com/pubsub/docs/validate-schema-message
+- https://docs.cloud.google.com/pubsub/docs/associate-schema-topic
+- https://docs.cloud.google.com/pubsub/docs/publish-topics-schema
